@@ -28,28 +28,6 @@ app.get('/', (req, res) => {
   });
 });
 
-// ++++++++++++++++++++++++++++++++++ Messages Begin
-// ++++++++++++++++++++++++++++++++++ 
-
-app.get('/messages', (req, res) => {
-  messages.getAll().then((messages) => {
-    res.json(messages);
-  });
-});
-
-app.post('/messages', (req, res) => {
-  console.log(req.body);
-  messages.create(req.body).then((message) => {
-    res.json(message);
-  }).catch((error) => {
-    res.status(500);
-    res.json(error);
-  });
-});
-
-// ++++++++++++++++++++++++++++++++++ 
-// ++++++++++++++++++++++++++++++++++ Messages End
-
 const setSchema = new mongoose.Schema({
   spanish: String,
   english: String,
